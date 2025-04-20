@@ -5,11 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be the earthly change</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Basic styles for the carousel */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .carousel-description {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <!-- Updated path for logo -->
             <img src="images/logo.png" alt="Be the earthly change Logo">
         </div>
     </header>
@@ -17,15 +61,51 @@
         <section class="event-info">
             <h2>Trash Cleanup Event</h2>
             <p>Date: <span id="event-date">March 15, 2024</span></p>
-            <div class="event-images">
-                <!-- Updated paths for cleanup images -->
-                <img src="images/image1.jpg" alt="Cleanup Image 1">
-                <img src="images/image2.jpg" alt="Cleanup Image 2">
-                <img src="images/image3.jpg" alt="Cleanup Image 3">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <div>
+                        <img src="images/image1.jpg" alt="Cleanup Image 1">
+                        <p class="carousel-description">Volunteers cleaning up a beach.</p>
+                    </div>
+                    <div>
+                        <img src="images/image2.jpg" alt="Cleanup Image 2">
+                        <p class="carousel-description">A group of people collecting trash in a park.</p>
+                    </div>
+                    <div>
+                        <img src="images/image3.jpg" alt="Cleanup Image 3">
+                        <p class="carousel-description">Children participating in a community cleanup drive.</p>
+                    </div>
+                </div>
+                <div class="carousel-buttons">
+                    <button id="prev-btn">&lt;</button>
+                    <button id="next-btn">&gt;</button>
+                </div>
             </div>
             <p>Description: Join us for a community trash cleanup event to help keep our environment clean and beautiful. Together, we can make a difference!</p>
         </section>
     </main>
-    <script src="js/script.js"></script>
+    <script>
+        // JavaScript for carousel functionality
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-images > div');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+    </script>
 </body>
 </html>
