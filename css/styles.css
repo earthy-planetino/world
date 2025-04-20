@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.event-section {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-date {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.event-description {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #666;
+}
+
+.event-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.event-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
